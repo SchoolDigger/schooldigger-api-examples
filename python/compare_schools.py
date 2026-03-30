@@ -119,20 +119,23 @@ def display_comparison(s1: dict, s2: dict) -> None:
 
     # Test scores comparison — show subjects present in both schools
     print(f"\n  --- Test Scores ---\n")
-    ts1 = {ts.get("subject"): ts for ts in s1.get("testScores", [])}
-    ts2 = {ts.get("subject"): ts for ts in s2.get("testScores", [])}
-    subjects = sorted(set(ts1.keys()) | set(ts2.keys()))
+    # Key on (subject, grade) to avoid collisions when multiple entries share a subject
+    ts1 = {(ts.get("subject"), ts.get("grade")): ts for ts in s1.get("testScores", [])}
+    ts2 = {(ts.get("subject"), ts.get("grade")): ts for ts in s2.get("testScores", [])}
+    keys = sorted(set(ts1.keys()) | set(ts2.keys()))
 
-    if subjects:
-        row("Subject", "% Met Standard", "% Met Standard")
+    if keys:
+        row("Subject / Grade", "% Met Standard", "% Met Standard")
         print(f"  {'-' * 24} {'-' * col_w} {'-' * col_w}")
         shown = 0
-        for subj in subjects:
-            t1 = ts1.get(subj, {}).get("schoolTestScore", {})
-            t2 = ts2.get(subj, {}).get("schoolTestScore", {})
+        for key in keys:
+            subj, grade = key
+            t1 = ts1.get(key, {}).get("schoolTestScore", {})
+            t2 = ts2.get(key, {}).get("schoolTestScore", {})
             v1 = fmt(t1.get("percentMetStandard"), "%")
             v2 = fmt(t2.get("percentMetStandard"), "%")
-            row(str(subj)[:24], v1, v2)
+            label = f"{subj} Gr.{grade}" if grade else str(subj)
+            row(label[:24], v1, v2)
             shown += 1
             if shown >= 8:
                 break

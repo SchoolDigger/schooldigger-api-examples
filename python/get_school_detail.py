@@ -71,19 +71,21 @@ def display_school(school: dict) -> None:
     if free_lunch is not None and free_lunch != "N/A":
         print(f"  Free/Reduced Lunch:  {free_lunch:.1f}%")
 
-    # SchoolDigger URL
-    print(f"\n  SchoolDigger page: https://www.schooldigger.com/go/{school_id}")
+    # SchoolDigger URL (use urlSchoolDigger field from API response)
+    sd_url = school.get("urlSchoolDigger") or school.get("url", "")
+    if sd_url:
+        print(f"\n  SchoolDigger page: {sd_url}")
 
     # Demographics
     print(f"\n--- Demographics ({year_label}) ---\n")
     demo_fields = [
-        ("percentWhite", "White"),
-        ("percentBlack", "Black"),
-        ("percentHispanic", "Hispanic"),
-        ("percentAsian", "Asian"),
-        ("percentAmericanIndian", "American Indian"),
-        ("percentPacificIslander", "Pacific Islander"),
-        ("percentTwoOrMoreRaces", "Two or More Races"),
+        ("percentofWhiteStudents", "White"),
+        ("percentofAfricanAmericanStudents", "Black"),
+        ("percentofHispanicStudents", "Hispanic"),
+        ("percentofAsianStudents", "Asian"),
+        ("percentofIndianStudents", "American Indian"),
+        ("percentofPacificIslanderStudents", "Pacific Islander"),
+        ("percentofTwoOrMoreRaceStudents", "Two or More Races"),
     ]
     print(f"  {'Group':<22} {'Percent':>8}")
     print(f"  {'-' * 22} {'-' * 8}")

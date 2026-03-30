@@ -90,7 +90,7 @@ def export_rankings(state: str, level: str, app_id: str, app_key: str) -> str:
             "City",
             "District",
             "Stars",
-            "Avg Standard Score",
+            "Statewide Percentile %",
             "Students",
             "Free/Reduced Lunch %",
         ])

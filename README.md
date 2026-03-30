@@ -75,7 +75,7 @@ SchoolDigger provides data on **130,000+ U.S. public, charter, and private schoo
 | `find_nearby_schools.py` | Find schools near a latitude/longitude (Pro/Enterprise) |
 | `export_rankings_csv.py` | Export a state's school rankings to CSV |
 
-### JavaScript
+### JavaScript *(coming soon)*
 
 | File | Description |
 |------|-------------|
@@ -84,20 +84,20 @@ SchoolDigger provides data on **130,000+ U.S. public, charter, and private schoo
 | `autocomplete_demo.mjs` | Demonstrate the autocomplete endpoint for typeahead UIs |
 | `express_school_lookup.mjs` | Express.js server with a school search endpoint |
 
-### R
+### R *(coming soon)*
 
 | File | Description |
 |------|-------------|
 | `search_schools.R` | Search schools and create a data frame |
 | `plot_school_demographics.R` | Fetch a state's rankings and plot demographic breakdowns with ggplot2 |
 
-### C#
+### C# *(coming soon)*
 
 | File | Description |
 |------|-------------|
 | `Program.cs` | .NET console app demonstrating school search and detail retrieval |
 
-### curl
+### curl *(coming soon)*
 
 | File | Description |
 |------|-------------|
