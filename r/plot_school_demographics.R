@@ -82,8 +82,10 @@ demo_df <- data.frame(
   Hispanic    = get_demo(yearly, "percentofHispanicStudents"),
   Black       = get_demo(yearly, "percentofAfricanAmericanStudents"),
   Asian       = get_demo(yearly, "percentofAsianStudents"),
-  Two_or_More = get_demo(yearly, "percentofTwoOrMoreRaceStudents"),
-  Other       = get_demo(yearly, "percentofIndianStudents"),
+  Two_or_More      = get_demo(yearly, "percentofTwoOrMoreRaceStudents"),
+  Pacific_Islander = get_demo(yearly, "percentofPacificIslanderStudents"),
+  # American Indian + any unaccounted remainder grouped as Other
+  Other            = get_demo(yearly, "percentofIndianStudents"),
   stringsAsFactors = FALSE
 )
 
@@ -97,7 +99,7 @@ demo_long <- demo_df %>%
     names_to  = "group",
     values_to = "percent"
   ) %>%
-  mutate(group = factor(group, levels = c("White", "Hispanic", "Asian", "Black", "Two_or_More", "Other")))
+  mutate(group = factor(group, levels = c("White", "Hispanic", "Asian", "Black", "Two_or_More", "Pacific_Islander", "Other")))
 
 # Order schools by their rank (they arrive in rank order)
 demo_long$school_name <- factor(demo_long$school_name,
@@ -106,12 +108,13 @@ demo_long$school_name <- factor(demo_long$school_name,
 cat("Building demographic chart...\n")
 
 pal <- c(
-  White       = "#4E79A7",
-  Hispanic    = "#F28E2B",
-  Asian       = "#59A14F",
-  Black       = "#E15759",
-  Two_or_More = "#B07AA1",
-  Other       = "#9C755F"
+  White            = "#4E79A7",
+  Hispanic         = "#F28E2B",
+  Asian            = "#59A14F",
+  Black            = "#E15759",
+  Two_or_More      = "#B07AA1",
+  Pacific_Islander = "#76B7B2",
+  Other            = "#9C755F"
 )
 
 p <- ggplot(demo_long, aes(x = school_name, y = percent, fill = group)) +

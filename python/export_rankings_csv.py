@@ -103,8 +103,7 @@ def export_rankings(state: str, level: str, app_id: str, app_key: str) -> str:
             yearly = school.get("schoolYearlyDetails", [])
             latest = yearly[0] if yearly else {}
 
-            # Average standard score from rank history if available
-            avg_score = rank_history[0].get("rankStatewidePercentage", "") if rank_history else ""
+            statewide_pct = rank_history[0].get("rankStatewidePercentage", "") if rank_history else ""
 
             writer.writerow([
                 rank,
@@ -112,7 +111,7 @@ def export_rankings(state: str, level: str, app_id: str, app_key: str) -> str:
                 school.get("address", {}).get("city", ""),
                 school.get("district", {}).get("districtName", ""),
                 stars,
-                avg_score,
+                statewide_pct,
                 latest.get("numberOfStudents", ""),
                 latest.get("percentFreeDiscLunch", ""),
             ])
