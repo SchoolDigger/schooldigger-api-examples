@@ -130,3 +130,4 @@ SchoolDigger provides data on **130,000+ U.S. public, charter, and private schoo
 ## License
 
 These examples are MIT licensed. The SchoolDigger API itself requires an API key — [get one free](https://developer.schooldigger.com).
+
