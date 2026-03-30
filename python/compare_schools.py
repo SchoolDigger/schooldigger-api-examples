@@ -117,16 +117,28 @@ def display_comparison(s1: dict, s2: dict) -> None:
         fmt(l1.get("percentFreeDiscLunch"), "%"),
         fmt(l2.get("percentFreeDiscLunch"), "%"))
 
-    # Test scores comparison — show subjects present in both schools
+    # Test scores comparison — newest entry per (subject, grade) for each school
+    # grade '14' is SchoolDigger's code for school-wide composite score
+    def grade_label(g: str) -> str:
+        return "All" if str(g) == "14" else str(g) if g else "All"
+
+    def newest_by_key(scores: list) -> dict:
+        result: dict = {}
+        for ts in sorted(scores, key=lambda t: t.get("year", 0), reverse=True):
+            key = (ts.get("subject"), ts.get("grade"))
+            if key not in result:
+                result[key] = ts
+        return result
+
     print(f"\n  --- Test Scores ---\n")
-    # Key on (subject, grade) to avoid collisions when multiple entries share a subject
-    ts1 = {(ts.get("subject"), ts.get("grade")): ts for ts in s1.get("testScores", [])}
-    ts2 = {(ts.get("subject"), ts.get("grade")): ts for ts in s2.get("testScores", [])}
+    ts1 = newest_by_key(s1.get("testScores", []))
+    ts2 = newest_by_key(s2.get("testScores", []))
     keys = sorted(set(ts1.keys()) | set(ts2.keys()))
 
+    ts_lbl_w = 30  # wider than main rows to fit "English Language Arts Gr.All"
     if keys:
-        row("Subject / Grade", "% Met Standard", "% Met Standard")
-        print(f"  {'-' * 24} {'-' * col_w} {'-' * col_w}")
+        print(f"  {'Subject / Grade':<{ts_lbl_w}} {'% Met Standard':<{col_w}} {'% Met Standard':<{col_w}}")
+        print(f"  {'-' * ts_lbl_w} {'-' * col_w} {'-' * col_w}")
         shown = 0
         for key in keys:
             subj, grade = key
@@ -134,8 +146,8 @@ def display_comparison(s1: dict, s2: dict) -> None:
             t2 = ts2.get(key, {}).get("schoolTestScore", {})
             v1 = fmt(t1.get("percentMetStandard"), "%")
             v2 = fmt(t2.get("percentMetStandard"), "%")
-            label = f"{subj} Gr.{grade}" if grade else str(subj)
-            row(label[:24], v1, v2)
+            label = f"{subj} Gr.{grade_label(grade)}"
+            print(f"  {label[:ts_lbl_w]:<{ts_lbl_w}} {v1:<{col_w}} {v2:<{col_w}}")
             shown += 1
             if shown >= 8:
                 break

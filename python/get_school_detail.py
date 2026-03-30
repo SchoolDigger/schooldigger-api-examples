@@ -108,8 +108,8 @@ def display_school(school: dict) -> None:
             stars = r.get("rankStars", "N/A")
             print(f"  {yr_label:<12} {rank_str:<16} {stars:<6}")
 
-    # Test scores
-    test_scores = school.get("testScores", [])
+    # Test scores — sort newest first; grade '14' is SchoolDigger's code for school-wide composite
+    test_scores = sorted(school.get("testScores", []), key=lambda t: t.get("year", 0), reverse=True)
     if test_scores:
         print(f"\n--- Test Scores (most recent) ---\n")
         print(f"  {'Subject':<14} {'Grade':<8} {'Year':<10} {'% Met Standard':>15}")
@@ -117,17 +117,18 @@ def display_school(school: dict) -> None:
         shown = set()
         for ts in test_scores:
             subject = ts.get("subject", "N/A")
-            grade = ts.get("grade", "All")
+            raw_grade = ts.get("grade", "")
+            grade_label = "All" if str(raw_grade) == "14" else str(raw_grade) if raw_grade else "All"
             year = ts.get("year", "")
             school_score = ts.get("schoolTestScore", {})
             pct = school_score.get("percentMetStandard")
-            key = (subject, grade)
+            key = (subject, raw_grade)
             if key in shown:
                 continue
             shown.add(key)
             yr_label = f"{year - 1}-{str(year)[2:]}" if year else "N/A"
             pct_str = f"{pct:.1f}%" if pct is not None else "N/A"
-            print(f"  {subject:<14} {str(grade):<8} {yr_label:<10} {pct_str:>15}")
+            print(f"  {subject:<14} {grade_label:<8} {yr_label:<10} {pct_str:>15}")
             if len(shown) >= 10:
                 break
     else:

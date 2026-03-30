@@ -107,8 +107,8 @@ function displaySchool(school) {
     }
   }
 
-  // Test scores
-  const testScores = school.testScores ?? [];
+  // Test scores — sort newest first; grade 14 is SchoolDigger's code for school-wide composite
+  const testScores = [...(school.testScores ?? [])].sort((a, b) => (b.year ?? 0) - (a.year ?? 0));
   if (testScores.length > 0) {
     console.log(`\n--- Test Scores (most recent) ---\n`);
     console.log(`  ${"Subject".padEnd(14)} ${"Grade".padEnd(8)} ${"Year".padEnd(10)} ${"% Met Standard".padStart(15)}`);
@@ -118,9 +118,10 @@ function displaySchool(school) {
       const key = `${ts.subject}|${ts.grade}`;
       if (shown.has(key)) continue;
       shown.add(key);
+      const gradeLabel = String(ts.grade) === "14" ? "All" : String(ts.grade ?? "All");
       const pct = ts.schoolTestScore?.percentMetStandard;
       const pctStr = pct != null ? `${pct.toFixed(1)}%` : "N/A";
-      console.log(`  ${String(ts.subject ?? "").padEnd(14)} ${String(ts.grade ?? "All").padEnd(8)} ${yearLabel(ts.year).padEnd(10)} ${pctStr.padStart(15)}`);
+      console.log(`  ${String(ts.subject ?? "").padEnd(14)} ${gradeLabel.padEnd(8)} ${yearLabel(ts.year).padEnd(10)} ${pctStr.padStart(15)}`);
       if (shown.size >= 10) break;
     }
   } else {
