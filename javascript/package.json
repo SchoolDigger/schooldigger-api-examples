@@ -1,0 +1,17 @@
+{
+  "name": "schooldigger-api-examples",
+  "version": "1.0.0",
+  "description": "Example code for the SchoolDigger K-12 School Data API",
+  "type": "module",
+  "scripts": {
+    "search": "node search_schools.mjs",
+    "detail": "node get_school_detail.mjs",
+    "autocomplete": "node autocomplete_demo.mjs",
+    "server": "node express_school_lookup.mjs"
+  },
+  "dependencies": {
+    "express": "^4.18.0"
+  },
+  "keywords": ["school-data", "education-api", "k12", "schooldigger"],
+  "license": "MIT"
+}
