@@ -21,7 +21,7 @@ library(ggplot2)
 library(tidyr)
 library(dplyr)
 
-API_BASE <- "https://api.schooldigger.com/v2.3"
+API_BASE <- "https://api.schooldigger.com/v2.4"
 
 app_id  <- Sys.getenv("SCHOOLDIGGER_APP_ID")
 app_key <- Sys.getenv("SCHOOLDIGGER_APP_KEY")

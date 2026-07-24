@@ -14,7 +14,7 @@ using System.Net.Http.Json;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 
-const string ApiBase = "https://api.schooldigger.com/v2.3";
+const string ApiBase = "https://api.schooldigger.com/v2.4";
 
 // Read credentials from environment variables
 string appId  = Environment.GetEnvironmentVariable("SCHOOLDIGGER_APP_ID")

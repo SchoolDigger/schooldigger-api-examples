@@ -17,7 +17,7 @@
 
 set -euo pipefail
 
-BASE="https://api.schooldigger.com/v2.3"
+BASE="https://api.schooldigger.com/v2.4"
 AUTH="appID=${SCHOOLDIGGER_APP_ID}&appKey=${SCHOOLDIGGER_APP_KEY}"
 
 

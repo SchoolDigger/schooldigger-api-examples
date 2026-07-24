@@ -17,7 +17,7 @@
 library(httr)
 library(jsonlite)
 
-API_BASE <- "https://api.schooldigger.com/v2.3"
+API_BASE <- "https://api.schooldigger.com/v2.4"
 
 # Read credentials from environment variables
 app_id  <- Sys.getenv("SCHOOLDIGGER_APP_ID")

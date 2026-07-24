@@ -26,7 +26,7 @@
 
 import express from "express";
 
-const API_BASE = "https://api.schooldigger.com/v2.3";
+const API_BASE = "https://api.schooldigger.com/v2.4";
 const PORT = 3000;
 
 function getCredentials() {
