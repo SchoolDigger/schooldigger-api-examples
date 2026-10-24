@@ -108,3 +108,24 @@ echo
 echo "=== Bonus: Nearby schools (Lake Forest Park, WA — requires Pro/Enterprise) ==="
 curl -s "${BASE}/schools?st=WA&nearLatitude=47.7631&nearLongitude=-122.2878&distanceMiles=3&${AUTH}" | python -m json.tool
 echo
+
+# ── Bonus: Vaccination rates (API v3.1) ──────────────────────────────────────
+# v3.1 adds `vaccination` to the school record: the rates the state published
+# (source, headline, and figures by year, grade, vaccine and status, with the
+# state's district, county and state figures). Absent when the state publishes
+# none. Default: the headline grade for its most recent year;
+# includeVaccinationDetail=true returns every grade and year. On /v3.1/schools
+# each school carries the headline alone as `vaccination`.
+# Default school: 530111000200 = Progress Elementary, WA
+
+BASE31="https://api.schooldigger.com/v3.1"
+
+echo "=== Bonus: Vaccination rates (Progress Elementary, WA — API v3.1) ==="
+curl -s "${BASE31}/schools/530111000200?${AUTH}" \
+  | python -c "import json,sys; print(json.dumps(json.load(sys.stdin).get('vaccination'), indent=2))"
+echo
+
+echo "=== Bonus: Vaccination headline on each school (Central Valley SD, WA — API v3.1) ==="
+curl -s "${BASE31}/schools?st=WA&districtID=5301110&${AUTH}" \
+  | python -c "import json,sys; [print(s['schoolName'], s.get('vaccination', {}).get('value')) for s in json.load(sys.stdin)['schoolList']]"
+echo

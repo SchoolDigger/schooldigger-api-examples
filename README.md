@@ -71,6 +71,7 @@ SchoolDigger provides data on **130,000+ U.S. public, charter, and private schoo
 |------|-------------|
 | `search_schools.py` | Search schools by state and keyword, display results |
 | `get_school_detail.py` | Fetch full school profile including test scores and demographics |
+| `get_vaccination_rates.py` | Show a school's state-published vaccination rates with district, county and state figures (API v3.1) |
 | `compare_schools.py` | Compare two schools side-by-side (rankings, test scores, demographics) |
 | `find_nearby_schools.py` | Find schools near a latitude/longitude (Pro/Enterprise) |
 | `export_rankings_csv.py` | Export a state's school rankings to CSV |
@@ -101,7 +102,7 @@ SchoolDigger provides data on **130,000+ U.S. public, charter, and private schoo
 
 | File | Description |
 |------|-------------|
-| `examples.sh` | Annotated curl commands for every endpoint |
+| `examples.sh` | Annotated curl commands for every endpoint, plus API v3.1 vaccination rates |
 
 ## Common Use Cases
 
