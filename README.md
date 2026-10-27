@@ -23,25 +23,25 @@ SchoolDigger provides data on **130,000+ U.S. public, charter, and private schoo
 
 | | |
 |---|---|
-| **Base URL** | `https://api.schooldigger.com/v2.4` |
+| **Base URL** | `https://api.schooldigger.com/v3.1` |
 | **Format** | JSON |
 | **Auth** | `appID` + `appKey` query parameters |
 | **Free Tier** | DEV/TEST — Enterprise-level data, 20 calls/day, no credit card |
-| **Docs** | [Interactive docs](https://developer.schooldigger.com/docs) · [Swagger spec](https://api.schooldigger.com/swagger/docs/v2.4) · [LLM reference](https://developer.schooldigger.com/llms-full.txt) |
+| **Docs** | [Interactive docs](https://developer.schooldigger.com/docs) · [Swagger spec](https://api.schooldigger.com/swagger/docs/v3.1) · [LLM reference](https://developer.schooldigger.com/llms-full.txt) |
 | **Pricing** | Free → $19.90/mo → $89/mo → $189/mo |
 
 ### Endpoints
 
 | Endpoint | Description |
 |----------|-------------|
-| `GET /v2.4/schools` | Search schools by state, city, zip, name, location, type |
-| `GET /v2.4/schools/{id}` | Full school record with test scores, finance, reviews, rank history |
-| `GET /v2.4/districts` | Search districts by state, city, zip, name, location |
-| `GET /v2.4/districts/{id}` | Full district record with boundaries, test scores, finance |
-| `GET /v2.4/rankings/schools/{st}` | Statewide school ranking list |
-| `GET /v2.4/rankings/districts/{st}` | Statewide district ranking list |
-| `GET /v2.4/autocomplete/schools` | Fast typeahead school search |
-| `GET /v2.4/autocomplete/districts` | Fast typeahead district search |
+| `GET /v3.1/schools` | Search schools by state, city, zip, name, location, type |
+| `GET /v3.1/schools/{id}` | Full school record with test scores, finance, reviews, rank history |
+| `GET /v3.1/districts` | Search districts by state, city, zip, name, location |
+| `GET /v3.1/districts/{id}` | Full district record with boundaries, test scores, finance |
+| `GET /v3.1/rankings/schools/{st}` | Statewide school ranking list |
+| `GET /v3.1/rankings/districts/{st}` | Statewide district ranking list |
+| `GET /v3.1/autocomplete/schools` | Fast typeahead school search |
+| `GET /v3.1/autocomplete/districts` | Fast typeahead district search |
 
 ## Quick Start
 
@@ -60,7 +60,7 @@ SchoolDigger provides data on **130,000+ U.S. public, charter, and private schoo
    cd javascript && npm install && node search_schools.mjs
 
    # curl
-   curl "https://api.schooldigger.com/v2.4/schools?st=WA&q=Lincoln&appID=$SCHOOLDIGGER_APP_ID&appKey=$SCHOOLDIGGER_APP_KEY"
+   curl "https://api.schooldigger.com/v3.1/schools?st=WA&q=Lincoln&appID=$SCHOOLDIGGER_APP_ID&appKey=$SCHOOLDIGGER_APP_KEY"
    ```
 
 ## Examples

@@ -21,7 +21,7 @@ import sys
 import requests
 
 
-API_BASE = "https://api.schooldigger.com/v2.4"
+API_BASE = "https://api.schooldigger.com/v3.1"
 PER_PAGE = 50
 
 

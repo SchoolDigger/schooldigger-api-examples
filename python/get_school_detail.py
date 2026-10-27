@@ -17,7 +17,7 @@ import sys
 import requests
 
 
-API_BASE = "https://api.schooldigger.com/v2.4"
+API_BASE = "https://api.schooldigger.com/v3.1"
 
 
 def get_credentials() -> tuple[str, str]:

@@ -12,7 +12,7 @@
  * Requires Node.js 18+ (uses native fetch).
  */
 
-const API_BASE = "https://api.schooldigger.com/v2.4";
+const API_BASE = "https://api.schooldigger.com/v3.1";
 
 function getCredentials() {
   const appID = process.env.SCHOOLDIGGER_APP_ID;

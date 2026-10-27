@@ -17,7 +17,7 @@
  * Requires Node.js 18+ (uses native fetch).
  */
 
-const API_BASE = "https://api.schooldigger.com/v2.4";
+const API_BASE = "https://api.schooldigger.com/v3.1";
 
 function getCredentials() {
   const appID = process.env.SCHOOLDIGGER_APP_ID;
@@ -60,7 +60,7 @@ function displayMatches(data, query) {
   }
 
   console.log(`\nHow to use school IDs:`);
-  console.log(`  GET /v2.4/schools/{schoolid} — fetch the full school profile`);
+  console.log(`  GET /v3.1/schools/{schoolid} — fetch the full school profile`);
   console.log(`  e.g. node get_school_detail.mjs ${matches[0]?.schoolid ?? "530792001309"}`);
 }
 
