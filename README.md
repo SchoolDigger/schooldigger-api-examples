@@ -43,6 +43,8 @@ SchoolDigger provides data on **130,000+ U.S. public, charter, and private schoo
 | `GET /v3.1/autocomplete/schools` | Fast typeahead school search |
 | `GET /v3.1/autocomplete/districts` | Fast typeahead district search |
 
+To run many calls at once, the [async batch API](https://developer.schooldigger.com/batch-requests-schooldigger-api) (`POST https://api.schooldigger.com/batches`, paid plans) runs up to 2,000 of these GETs for you and returns the results in parts of 20. See the `batch_*` examples below.
+
 ## Quick Start
 
 1. **Get a free API key** at [developer.schooldigger.com](https://developer.schooldigger.com) (no credit card required)
@@ -75,6 +77,7 @@ SchoolDigger provides data on **130,000+ U.S. public, charter, and private schoo
 | `compare_schools.py` | Compare two schools side-by-side (rankings, test scores, demographics) |
 | `find_nearby_schools.py` | Find schools near a latitude/longitude (Pro/Enterprise) |
 | `export_rankings_csv.py` | Export a state's school rankings to CSV |
+| `batch_school_details.py` | Fetch many school records in one async batch: submit, poll with Retry-After, download parts (paid plans) |
 
 ### JavaScript
 
@@ -84,6 +87,7 @@ SchoolDigger provides data on **130,000+ U.S. public, charter, and private schoo
 | `get_school_detail.mjs` | Fetch and display a full school profile |
 | `autocomplete_demo.mjs` | Demonstrate the autocomplete endpoint for typeahead UIs |
 | `express_school_lookup.mjs` | Express.js server with a school search endpoint |
+| `batch_school_details.mjs` | Fetch many school records in one async batch: submit, poll with Retry-After, download parts (paid plans) |
 
 ### R
 
@@ -103,6 +107,7 @@ SchoolDigger provides data on **130,000+ U.S. public, charter, and private schoo
 | File | Description |
 |------|-------------|
 | `examples.sh` | Annotated curl commands for every endpoint, plus API v3.1 vaccination rates |
+| `batch.sh` | The async batch API: submit, poll, download a result part, cancel (paid plans) |
 
 ## Common Use Cases
 

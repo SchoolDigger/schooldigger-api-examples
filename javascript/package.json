@@ -7,7 +7,8 @@
     "search": "node search_schools.mjs",
     "detail": "node get_school_detail.mjs",
     "autocomplete": "node autocomplete_demo.mjs",
-    "server": "node express_school_lookup.mjs"
+    "server": "node express_school_lookup.mjs",
+    "batch": "node batch_school_details.mjs"
   },
   "dependencies": {
     "express": "^4.18.0"
